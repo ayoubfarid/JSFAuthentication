@@ -1,24 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!DOCTYPE html >
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-family: Poppins;
+        }
+    </style>
+</head>
 <f:view>
-    <h:outputLabel value="Hello, world"/>
-   <h:form>
-      <h:panelGrid columns="2">
-          <h:outputText  value="Username"/>
-          <h:inputText value="#{user.username}" type="text"/>
-          <h:outputText value="Password"/>
-          <h:inputText  value="#{user.password}" type="text"/>
-          <h:commandButton value="Login" action="#{user.login()}"/>
-      </h:panelGrid>
-   </h:form>
+    <div class="container" >
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h3 class="text-center"> Se connecter </h3>
+            </div>
 
-    <h:link outcome="register.xhtml" value="creer un compte" />
+        </div>
+        <div class="row justify-content-center mt-3">
 
+            <div class="col-md-6">
+
+                <!-- form card login -->
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h4 class="mb-0">Acceder a mon Compte</h4>
+                    </div>
+                    <div class="card-body">
+                        <h:form >
+                            <div class="form-group">
+                                <label >Nom utilisateur </label>
+                                <h:message style="color: red"  for="username"/>
+                                <h:inputText id="username" class="form-control" requiredMessage=" Veuillez entrez le nom utilisateur"   value="#{user.username}"  required="true" type="text">
+                                    <f:validateRegex pattern="[a-zA-Z]+"/>
+                                </h:inputText>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <h:message style="color: red"  for="password"/>
+                                <h:inputSecret id="password"  class="form-control" requiredMessage=" Veuillez entrez le mot de passe"  value="#{user.password}" required="true" >
+                                    <f:validateRegex pattern="[a-zA-Z]+"/>
+                                </h:inputSecret>
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton class="btn btn-success btn-lg float-right" value="Se connecter" action="#{user.login()}"/>
+                            </div>
+                            <div class="form-group">
+                                <h:link class="btn btn-link" outcome="register.xhtml" value="cree un compte" />
+
+                            </div>
+                         </h:form>
+                    </div><!--/card-block-->
+                </div><!-- /form card login -->
+            </div>
+        </div>
+
+
+
+    </div>
 
 </f:view>
+
+
+
+
+
+
+
+
 </html>

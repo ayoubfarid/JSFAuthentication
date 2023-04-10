@@ -1,23 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<!--    <h:form>-->
+<!--&lt;!&ndash;        <h:panelGrid columns="2">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:outputText value="Full name: "/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:inputText value="#{user.fullname}" type="text"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:outputText value="Username: "/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:inputText  value="#{user.username}" type="text"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:outputText value="Password: "/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:inputText  value="#{user.password}" type="text"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h:commandButton value="save" action="#{user.register()}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </h:panelGrid>&ndash;&gt;-->
+
+
+
+
+<!--            &lt;!&ndash;                <h:panelGrid columns="2">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <h:outputText  value="Nom utilisateur"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <h:inputText value="#{user.username}" type="text"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <h:outputText value="Mot de passe "/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <h:inputText  value="#{user.password}" type="text"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <h:commandButton value="Se connecter" action="#{user.login()}"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    &ndash;&gt;-->
+<!--            &lt;!&ndash;                    &ndash;&gt;-->
+<!--            &lt;!&ndash;                </h:panelGrid>&ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="fullnameId">Nom Complet</label>-->
+
+<!--                    <h:inputText id="fullnameId" value="#{user.fullname}" type="text"/>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="usernameId">Nom Utilisateur</label>-->
+<!--                    <h:inputText id="usernameId" value="#{user.username}" type="text"/>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="passwordId">Password</label>-->
+<!--                    <h:inputText  id="passwordId" value="#{user.password}" type="text"/> </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <h:commandButton class="btn btn-primary" value="Register" action="#{user.register()}"/>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <h:link class="btn btn-link" outcome="login.xhtml" value="connecter un compte" />-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--    </h:form>-->
 <f:view>
-    <h:outputLabel value="Creer an account"/>
-    <h:form>
-        <h:panelGrid columns="2">
-            <h:outputText value="Full name: "/>
-            <h:inputText value="#{user.fullname}" type="text"/>
-            <h:outputText value="Username: "/>
-            <h:inputText  value="#{user.username}" type="text"/>
-            <h:outputText value="Password: "/>
-            <h:inputText  value="#{user.password}" type="text"/>
-            <h:commandButton value="save" action="#{user.register()}"/>
-        </h:panelGrid>
-    </h:form>
+    <div class="container" >
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h3 class="text-center"> S'inscrire </h3>
+            </div>
+
+        </div>
+        <div class="row justify-content-center mt-3">
+
+            <div class="col-md-6">
+
+                <!-- form card login -->
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h4 class="mb-0">Creer mon Compte</h4>
+                    </div>
+                    <div class="card-body">
+                        <h:form >
+                            <div class="form-group">
+                                <label >Nom Complet </label>
+
+                                <h:inputText id="fullname" styleClass="form-control"  requiredMessage=" Veuillez entrez le nom complet"   value="#{user.fullname}"   required="true" type="text">
+                                    <f:validateRegex pattern="[a-zA-Z]+"/>
+                                </h:inputText>
+                                <h:message color="red" for="fullname" styleClass="errorBlock text-danger" />
+
+
+                            </div>
+                            <div class="form-group">
+                                <label >Nom utilisateur </label>
+
+                                <h:inputText id="username" styleClass="form-control" requiredMessage=" Veuillez entrez le nom utilisateur"   value="#{user.username}"  required="true" type="text">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </h:inputText>
+                                <h:message color="red" for="username" styleClass="errorBlock text-danger" />
+
+
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <h:inputSecret id="password"  styleClass="form-control" requiredMessage=" Veuillez entrez le mot de passe"  value="#{user.password}" required="true" >
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                                </h:inputSecret>
+                                <h:message color="red" for="password" styleClass="errorBlock text-danger" />
+
+
+                            </div>
+                            <div class="form-group">
+                                <label>Genre</label>
+                                <h:selectOneRadio class="form-select"  value = "#{user.genre}">
+                                    <f:selectItem itemValue = "0" itemLabel = "Homme" />
+                                    <f:selectItem itemValue = "1" itemLabel = "Femme" />
+                                </h:selectOneRadio>
+                            </div>
+                            <div class="form-group">
+                                <label>Pays</label> <br/>
+                                <h:selectOneMenu styleClass="form-select"  value = "#{user.pays}">
+                                    <f:selectItem  itemValue = "Maroc" itemLabel = "Maroc" />
+                                    <f:selectItem itemValue = "Autre" itemLabel = "Autres" />
+                                </h:selectOneMenu>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <h:inputText id="ageId"   styleClass="form-control" validatorMessage="Age doit etre superieur a 18 "  requiredMessage=" Ager est obligatoir"  value="#{user.age}"   >
+
+                                    <f:validateLongRange minimum="18" maximum="100" />
+                                </h:inputText>
+                                <h:message color="red" for="ageId" styleClass="errorBlock text-danger" />
+
+
+                            </div>
+                            <div class="form-group">
+                                <label > Adresse </label>
+
+                                <h:inputTextarea id="adresse" styleClass="form-control"     value="#{user.adresse}"   required="true" type="text">
+
+                                </h:inputTextarea>
+
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <h:commandButton class="btn btn-success btn-lg float-right" value="S'inscrire" action="#{user.register()}"/>
+                            </div>
+                            <div class="form-group">
+                                <h:link class="btn btn-link" outcome="login.xhtml" value="connecter un compte" />
+
+                </div>
+                        </h:form>
+            </div>
+        </div>
+
+
+
+    </div>
+        </div>
+    </div>
+
 
 </f:view>
+
 </html>
